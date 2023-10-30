@@ -12,7 +12,7 @@ export default function Home() {
       <h1 className="text-6xl font-bold">Hello World</h1>
 
       {/* Großes Logo der Webseite anzeigen */}
-      <Image src="/favicon.svg" alt="logo" width={500} height={500} />
+      <img src="/favicon.svg" alt="logo" width={500} height={500} />
 
       {/* Begrüßungstexte */}
       <p className="text-2xl font-bold">Willkommen bei Wetter Wandel Wizard</p>
