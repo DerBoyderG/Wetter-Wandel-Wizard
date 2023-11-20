@@ -1,13 +1,10 @@
 "use client";
 
-import Navbar from "./Components/Navbar";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
 
-      {/* Navbar der Seite */}
-      <Navbar />
       
       {/* Favicon der Seite setzen */}
       <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
