@@ -1,0 +1,1 @@
+//Eine Komponente für jede Stunde, die Temperatur und Wettericon anzeigt.

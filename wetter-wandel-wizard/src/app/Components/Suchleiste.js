@@ -1,0 +1,1 @@
+//Eine eigenständige Komponente, die ein Suchfeld beinhaltet.
