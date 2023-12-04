@@ -1,10 +1,11 @@
 "use client";
-
+import Chart from './Components/Klimawandel/KlimaDiagramm.js';
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
 
+<Chart />
       
       {/* Favicon der Seite setzen */}
       <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
