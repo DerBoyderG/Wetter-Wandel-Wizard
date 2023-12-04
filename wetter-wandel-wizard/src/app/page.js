@@ -25,12 +25,35 @@ export default function Home() {
   const tabs = [
     { title: 'Heute', href: '#heute' },
     { title: 'Klimawandel', href: '#klimawandel' },
+    { title: 'Nächsten Tage', href: '#naechsten-tage' },
   ];
+
+  //variable die longitude und latitude speichert und zum testen ausgeben
+  var showPosition = (position) => {
+    alert("Latitude: " + position.coords.latitude +
+      "\nLongitude: " + position.coords.longitude);
+  }
+
+
+  //methode um den standort zu bestimmen
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation wird nicht unterstützt");
+    }
+  }
+
+
 
   return (
     <div>
       <Header currentTime={currentTime} tabs={tabs} />
-      {/* Rest der Komponenten */}
+      <main className="p-4">
+        <div className="flex justify-center">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={getLocation}>Standort bestimmen</button>
+        </div>
+        </main>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 const Header = ({ currentTime, tabs }) => {
   return (
     <header className="flex items-center justify-between p-4 bg-blue-800 text-white">
-      <div className="text-xl font-bold">
+      <div className="text-xl font-bold -left-full">
         WetterWandelWizard
       </div>
       <div className="text-lg">
