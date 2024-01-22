@@ -1,37 +1,47 @@
 "use client";
-
+import React, { useState, useEffect } from 'react';
+import Header from "./Components/Header";
+import Suchleiste from './Components/Suchleiste';
+import WeatherPage from './Components/Wetter/Wetter';
 
 export default function Home() {
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  );
+  const [selectedLocation, setSelectedLocation] = useState("Köln");
+  const [activeTab, setActiveTab] = useState("Heute");
+
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      setCurrentTime(
+        new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      );
+    }, 60000);
+
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
+
+  function handleSearch(searchValue) {
+    setSelectedLocation(searchValue);
+  }
+  
+  function handleLocation(locationValue) {
+    setSelectedLocation(locationValue);
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-
-      
-      {/* Favicon der Seite setzen */}
-      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
-      {/* Titel der Webseite festlegen */}
-      <title>Wetter Wandel Wizard</title>
-
-      {/* Überschrift der Webseite */}
-      <h1 className="text-6xl font-bold">Hello World</h1>
-
-      {/* Großes Logo der Webseite anzeigen */}
-      <img src="/favicon.svg" alt="logo" width={500} height={500} />
-
-      {/* Begrüßungstexte */}
-      <p className="text-2xl font-bold">Willkommen bei Wetter Wandel Wizard</p>
-      <p className="text-sm">Viel Spaß!</p>
-
-      {/* Stilisierter Button */}
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Hier ist ein stilisierter Button
-      </button>
-
-      {/* Stilisierter Link zu einer externen Ressource */}
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="text-blue-500 hover:text-blue-800">
-        Hier ist ein stilisierter Link
-      </a>
-
-    </main>
-  )
-}
+    <div>
+      <Header
+        currentTime={currentTime}
+        activeTab={activeTab} 
+        setActiveTab={setActiveTab} 
+      />
+      <Suchleiste onSearch={handleSearch} onLocation={handleLocation} />
+      <main className="p-4">
+        {activeTab === "Heute" && <WeatherPage location={selectedLocation} />}
+      </main>
+    </div>
+  );
+};
