@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Header from "./Components/Header";
 import Suchleiste from './Components/Suchleiste';
 import WeatherPage from './Components/Wetter/Wetter';
+import StatsPage from './Components/Klimawandel/KlimaDiagramm';
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(
@@ -38,9 +39,10 @@ export default function Home() {
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
       />
-      <Suchleiste onSearch={handleSearch} onLocation={handleLocation} />
+      
       <main className="p-4">
-        {activeTab === "Heute" && <WeatherPage location={selectedLocation} />}
+        {activeTab === "Heute" && <><Suchleiste onSearch={handleSearch} onLocation={handleLocation} /> <div className="my-5"/> <WeatherPage location={selectedLocation} /></>}
+        {activeTab === "Klimawandel" && <StatsPage/>}
       </main>
     </div>
   );
