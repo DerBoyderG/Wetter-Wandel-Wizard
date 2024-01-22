@@ -5,8 +5,8 @@ function SearchBar({ onSearch, onLocation }) {
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
-  const countries = require('../api/countries.json');
-  const cities = countries.städte;
+  const countries = require('../api/orte.json');
+  const cities = countries.orte;
 
   const onChangeHandler = (text) => {
     const matches = cities.filter(city => city.match(new RegExp(text, "gi")));
@@ -30,10 +30,10 @@ function SearchBar({ onSearch, onLocation }) {
   };
 
   return (
-    <div className="relative mx-auto max-w-md">
+    <div className="relative mx-auto max-w-lg">
       <div className="flex items-center bg-white rounded-full shadow-md pl-2">
         <span className="text-gray-400">
-          <MdSearch />
+          <MdSearch style={{ color: 'gray' , fontSize: 25 }} />
         </span>
         <input
           type="text"
